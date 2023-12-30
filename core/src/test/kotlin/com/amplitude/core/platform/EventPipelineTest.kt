@@ -3,7 +3,6 @@ package com.amplitude.core.platform
 import com.amplitude.core.Amplitude
 import com.amplitude.core.Configuration
 import com.amplitude.core.events.BaseEvent
-import com.amplitude.core.utilities.InMemoryStorage
 import com.amplitude.core.utilities.InMemoryStorageProvider
 import io.mockk.coEvery
 import io.mockk.mockk
