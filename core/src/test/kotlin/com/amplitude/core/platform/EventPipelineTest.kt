@@ -3,6 +3,9 @@ package com.amplitude.core.platform
 import com.amplitude.core.Amplitude
 import com.amplitude.core.Configuration
 import com.amplitude.core.events.BaseEvent
+import com.amplitude.core.utilities.ConsoleLoggerProvider
+import com.amplitude.core.utilities.InMemoryStorageProvider
+import com.amplitude.id.IMIdentityStorageProvider
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.spyk
@@ -17,7 +20,14 @@ import org.junit.jupiter.api.Test
 class EventPipelineTest {
     private lateinit var amplitude: Amplitude
     private lateinit var networkConnectivityChecker: NetworkConnectivityChecker
-    private val config = Configuration(apiKey = "API_KEY", flushIntervalMillis = 5)
+    private val config = Configuration(
+        apiKey = "API_KEY",
+        flushIntervalMillis = 5,
+        storageProvider = InMemoryStorageProvider(),
+        loggerProvider = ConsoleLoggerProvider(),
+        identifyInterceptStorageProvider = InMemoryStorageProvider(),
+        identityStorageProvider = IMIdentityStorageProvider()
+    )
 
     @BeforeEach
     fun setup() {
